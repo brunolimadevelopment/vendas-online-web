@@ -1,4 +1,6 @@
+import { Typography } from 'antd';
 import styled from 'styled-components';
+const { Title } = Typography;
 
 export const ContainerLogin = styled.div`
   width: 1093px;
@@ -30,32 +32,6 @@ export const Welcome = styled.h2`
   font-family: 'Poppins', sans-serif;
 `;
 
-export const Menssage = styled.p`
-  font-size: 16px;
-  font-weight: 100;
-  font-family: 'Poppins', sans-serif;
-`;
-
-export const BtnLogin = styled.button`
-  width: 191px;
-  height: 66px;
-  border-radius: 30px;
-  border: 2px solid #fff;
-  background-color: transparent;
-  color: #fff;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 20px;
-  margin: 56px 0;
-  cursor: pointer;
-  transition: ease 0.5s;
-
-  &:hover {
-    background-color: white;
-    color: black;
-  }
-`;
-
 export const WhiteBox = styled.div`
   width: 65%;
   height: 100%;
@@ -68,22 +44,11 @@ export const WhiteBox = styled.div`
   color: white;
 `;
 
-export const RegisterTitle = styled.h2`
+export const LoginTitle = styled(Title)`
   color: black;
-  font-size: 32px;
   margin: 74px 0 15px;
-  font-family: 'Poppins', sans-serif;
-  font-weight: bolder;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  & span {
-    color: #a5a5a5;
-    margin: 15px 0;
-    font-size: 20px;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 100;
-  }
 `;

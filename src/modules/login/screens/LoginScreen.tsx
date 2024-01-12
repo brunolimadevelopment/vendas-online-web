@@ -1,13 +1,12 @@
 import { MailOutlined, UserOutlined } from '@ant-design/icons';
 
+import Button from '../../../shared/buttons/button/Button';
 import Input from '../../../shared/inputs/input/input';
 import {
   BlackBox,
-  BtnLogin,
   ContainerLogin,
   LoginImage,
-  Menssage,
-  RegisterTitle,
+  LoginTitle,
   Welcome,
   WhiteBox,
 } from '../styles/loginScreen.styles';
@@ -20,28 +19,28 @@ const LoginScreen = () => {
         <Welcome>
           <strong>Bem-vindo de volta!</strong>
         </Welcome>
-        <Menssage>Acesse sua conta agora mesmo.</Menssage>
-        <BtnLogin>Entrar</BtnLogin>
-        <p>Esqueci minha senha</p>
       </BlackBox>
       <WhiteBox>
-        <RegisterTitle>
-          <strong>Crie sua conta</strong>
-          <span>Preencha seus dados</span>
-        </RegisterTitle>
-
+        <LoginTitle level={2} type="secondary">
+          Login
+        </LoginTitle>
         <Input
           size="large"
           title="Nome"
           placeholder="Digite seu nome"
+          margin="15px 0 0"
           addonBefore={<UserOutlined />}
         />
         <Input
           size="large"
           title="Email"
           placeholder="Digite seu email"
+          margin="20px 0 0"
           addonBefore={<MailOutlined />}
         />
+        <Button size="large" type="primary" margin="20px 0 0">
+          ENTRAR
+        </Button>
       </WhiteBox>
     </ContainerLogin>
   );
