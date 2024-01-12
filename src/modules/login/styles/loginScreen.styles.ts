@@ -74,11 +74,16 @@ export const RegisterTitle = styled.h2`
   margin: 74px 0 15px;
   font-family: 'Poppins', sans-serif;
   font-weight: bolder;
-`;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-export const RegisterDesc = styled.p`
-  color: #a5a5a5;
-  margin: 0;
-  font-size: 20px;
-  font-family: 'Poppins', sans-serif;
+  & span {
+    color: #a5a5a5;
+    margin: 15px 0;
+    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 100;
+  }
 `;
