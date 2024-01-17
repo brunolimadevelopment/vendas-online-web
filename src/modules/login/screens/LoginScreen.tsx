@@ -1,4 +1,5 @@
 import { MailOutlined, UserOutlined } from '@ant-design/icons';
+import axios from 'axios';
 import { useState } from 'react';
 
 import Button from '../../../shared/buttons/button/Button';
@@ -13,19 +14,35 @@ import {
 } from '../styles/loginScreen.styles';
 
 const LoginScreen = () => {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleUsername = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setUsername(event.target.value);
+  const handleEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(event.target.value);
   };
 
   const handlePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(event.target.value);
   };
 
-  const handleLogin = () => {
-    alert(`username: ${username}, password: ${password}`);
+  // essa função vai ter que esperar - add o async. pois o axios vai no backend buscar os dados.
+  const handleLogin = async () => {
+    // await: espera a resposta do axios para continuar o codigo
+    await axios({
+      method: 'post',
+      url: 'http://localhost:8080/auth',
+      data: {
+        email: email,
+        password: password,
+      },
+    })
+      .then((result) => {
+        alert('Fez login');
+        return result.data;
+      })
+      .catch(() => {
+        alert('Usuário ou senha inválido');
+      });
   };
 
   return (
@@ -42,12 +59,12 @@ const LoginScreen = () => {
         </LoginTitle>
         <Input
           size="large"
-          title="Nome"
-          placeholder="Digite seu nome"
+          title="Email"
+          placeholder="Digite seu email"
           margin="15px 0 0"
           addonBefore={<UserOutlined />}
-          onChange={handleUsername}
-          value={username}
+          onChange={handleEmail}
+          value={email}
         />
         <Input
           type="password"
