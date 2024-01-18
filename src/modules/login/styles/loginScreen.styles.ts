@@ -16,20 +16,18 @@ export const BlackBox = styled.div`
   border-bottom-left-radius: 12px;
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
   color: white;
-`;
-
-export const LoginImage = styled.img`
-  width: 367px;
-  margin: 83px auto;
-  max-width: 70%;
 `;
 
 export const Welcome = styled.h2`
   font-size: 24px;
   font-weight: bolder;
   font-family: 'Poppins', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export const WhiteBox = styled.div`
@@ -41,12 +39,13 @@ export const WhiteBox = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+  justify-content: center;
   color: white;
 `;
 
 export const LoginTitle = styled(Title)`
   color: black;
-  margin: 74px 0 15px;
+  margin: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;

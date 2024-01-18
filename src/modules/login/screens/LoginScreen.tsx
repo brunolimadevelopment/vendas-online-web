@@ -3,11 +3,11 @@ import axios from 'axios';
 import { useState } from 'react';
 
 import Button from '../../../shared/buttons/button/Button';
+import SVGHome from '../../../shared/icons/SVGHome';
 import Input from '../../../shared/inputs/input/input';
 import {
   BlackBox,
   ContainerLogin,
-  LoginImage,
   LoginTitle,
   Welcome,
   WhiteBox,
@@ -48,9 +48,8 @@ const LoginScreen = () => {
   return (
     <ContainerLogin>
       <BlackBox>
-        <LoginImage src="./logo.svg" />
         <Welcome>
-          <strong>Bem-vindo de volta!</strong>
+          <SVGHome width={170} height={49} />
         </Welcome>
       </BlackBox>
       <WhiteBox>
