@@ -1,10 +1,10 @@
 import { MailOutlined, UserOutlined } from '@ant-design/icons';
-import axios from 'axios';
 import { useState } from 'react';
 
-import Button from '../../../shared/buttons/button/Button';
-import SVGHome from '../../../shared/icons/SVGHome';
-import Input from '../../../shared/inputs/input/input';
+import Button from '../../../shared/components/buttons/button/Button';
+import SVGHome from '../../../shared/components/icons/SVGHome';
+import Input from '../../../shared/components/inputs/input/input';
+import { useRequests } from '../../../shared/hooks/useRequests';
 import {
   BlackBox,
   ContainerLogin,
@@ -16,6 +16,7 @@ import {
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { postRequest, loading } = useRequests();
 
   const handleEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
@@ -26,23 +27,11 @@ const LoginScreen = () => {
   };
 
   // essa função vai ter que esperar - add o async. pois o axios vai no backend buscar os dados.
-  const handleLogin = async () => {
-    // await: espera a resposta do axios para continuar o codigo
-    await axios({
-      method: 'post',
-      url: 'http://localhost:8080/auth',
-      data: {
-        email: email,
-        password: password,
-      },
-    })
-      .then((result) => {
-        alert('Fez login');
-        return result.data;
-      })
-      .catch(() => {
-        alert('Usuário ou senha inválido');
-      });
+  const handleLogin = () => {
+    postRequest('http://localhost:8080/auth', {
+      email: email,
+      password: password,
+    });
   };
 
   return (
@@ -75,7 +64,13 @@ const LoginScreen = () => {
           onChange={handlePassword}
           value={password}
         />
-        <Button size="large" type="primary" margin="20px 0 0" onClick={handleLogin}>
+        <Button
+          size="large"
+          loading={loading}
+          type="primary"
+          margin="20px 0 0"
+          onClick={handleLogin}
+        >
           ENTRAR
         </Button>
       </WhiteBox>
