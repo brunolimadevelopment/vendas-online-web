@@ -9,12 +9,13 @@ interface globalContextProps {
   setGlobalData: (globalData: globalData) => void;
 }
 
-const GlobalContext = createContext({} as globalContextProps);
-
 interface GlobalProvideProps {
   children: React.ReactNode;
 }
 
+const GlobalContext = createContext({} as globalContextProps);
+
+// Hook to main.tsx
 export const GlobalProvider = ({ children }: GlobalProvideProps) => {
   const [globalData, setGlobalData] = useState<globalData>({});
   return (
@@ -24,8 +25,10 @@ export const GlobalProvider = ({ children }: GlobalProvideProps) => {
   );
 };
 
+// Hook to components
 export const useGlobalContext = () => {
   const { globalData, setGlobalData } = useContext(GlobalContext);
+
   const setAccessToken = (accessToken: string) => {
     setGlobalData({
       ...globalData,

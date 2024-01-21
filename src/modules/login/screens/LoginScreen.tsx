@@ -16,6 +16,7 @@ import {
 
 const LoginScreen = () => {
   const { accessToken, setAccessToken } = useGlobalContext();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { postRequest, loading } = useRequests();
