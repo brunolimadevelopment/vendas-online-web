@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useState } from 'react';
 
+import { connectionAPIPost } from '../functions/connectionAPI';
 import { useGlobalContext } from './useGlogbalContext';
 
 export const useRequests = () => {
@@ -21,19 +22,15 @@ export const useRequests = () => {
       });
   };
 
-  const postRequest = async (url: string, body: any) => {
+  const postRequest = async (url: string, body: unknown) => {
     setLoading(true); // aqui o load está true
-    const returnData = await axios({
-      method: 'post',
-      url: url,
-      data: body,
-    })
+    const returnData = connectionAPIPost(url, body)
       .then((result) => {
         setNotification('Entrando...', 'success', 'Usuário logado com sucesso!');
-        return result.data;
+        return result;
       })
-      .catch(() => {
-        setNotification('Senha inválida', 'error', 'Verifique seu email e senha!');
+      .catch((error: Error) => {
+        setNotification(error.message, 'error', 'Verifique seu email e senha!');
       });
 
     setLoading(false);
