@@ -7,6 +7,7 @@ import { createBrowserRouter, RouteObject, RouterProvider } from 'react-router-d
 
 // ROTAS
 import { loginRoutes } from './modules/login/routes';
+import { GlobalProvider } from './shared/hooks/useGlogbalContext';
 
 const mainRoutes: RouteObject[] = [
   {
@@ -20,6 +21,8 @@ const router: RemixRouter = createBrowserRouter([...mainRoutes, ...loginRoutes])
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <GlobalProvider>
+      <RouterProvider router={router} />
+    </GlobalProvider>
   </React.StrictMode>,
 );
