@@ -1,8 +1,11 @@
 import axios from 'axios';
 import { useState } from 'react';
 
+import { useGlobalContext } from './useGlogbalContext';
+
 export const useRequests = () => {
   const [loading, setLoading] = useState(false);
+  const { setNotification } = useGlobalContext();
 
   const getRequest = async (url: string) => {
     setLoading(true); // aqui o load está true
@@ -26,11 +29,11 @@ export const useRequests = () => {
       data: body,
     })
       .then((result) => {
-        alert('Login');
+        setNotification('Entrando...', 'success', 'Usuário logado com sucesso!');
         return result.data;
       })
       .catch(() => {
-        alert('Erro');
+        setNotification('Senha inválida', 'error', 'Verifique seu email e senha!');
       });
 
     setLoading(false);
