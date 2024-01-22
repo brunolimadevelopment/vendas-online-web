@@ -24,8 +24,8 @@ export const useRequests = () => {
 
   const postRequest = async <T>(url: string, body: unknown): Promise<T | undefined> => {
     setLoading(true); // aqui o load está true
-    console.log(url, body);
-    const returnData = connectionAPIPost<T>(url, body)
+    //console.log(url, body);
+    const returnData = await connectionAPIPost<T>(url, body)
       .then((result) => {
         setNotification('Entrando...', 'success', 'Usuário logado com sucesso!');
         return result;

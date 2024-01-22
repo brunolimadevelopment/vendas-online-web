@@ -4,7 +4,6 @@ import { useState } from 'react';
 import Button from '../../../shared/components/buttons/button/Button';
 import SVGHome from '../../../shared/components/icons/SVGHome';
 import Input from '../../../shared/components/inputs/input/input';
-import { useGlobalContext } from '../../../shared/hooks/useGlogbalContext';
 import { useRequests } from '../../../shared/hooks/useRequests';
 import {
   BlackBox,
@@ -16,8 +15,6 @@ import {
 import { UserType } from '../types/UserType';
 
 const LoginScreen = () => {
-  const { accessToken, setAccessToken } = useGlobalContext();
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { postRequest, loading } = useRequests();
@@ -31,13 +28,11 @@ const LoginScreen = () => {
   };
 
   // essa função vai ter que esperar - add o async. pois o axios vai no backend buscar os dados.
-  const handleLogin = async () => {
-    const user = await postRequest<UserType>('http://localhost:8080/auth', {
+  const handleLogin = () => {
+    postRequest<UserType>('http://localhost:8080/auth', {
       email: email,
       password: password,
     });
-
-    setAccessToken(user?.accessToken || '');
   };
 
   return (
@@ -49,7 +44,7 @@ const LoginScreen = () => {
       </BlackBox>
       <WhiteBox>
         <LoginTitle level={2} type="secondary">
-          Login {accessToken}
+          Login
         </LoginTitle>
         <Input
           size="large"

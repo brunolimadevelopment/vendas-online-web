@@ -51,13 +51,13 @@ export const connectionAPIDelete = async <T>(url: string): Promise<T> => {
 };
 
 export const connectionAPIPost = async <T>(url: string, body: unknown): Promise<T> => {
-  return ConnectAPI.connect(url, MethodsEnum.POST);
+  return ConnectAPI.connect(url, MethodsEnum.POST, body);
 };
 
 export const connectionAPIPut = async <T>(url: string, body: unknown): Promise<T> => {
-  return ConnectAPI.connect(url, MethodsEnum.PUT);
+  return ConnectAPI.connect(url, MethodsEnum.PUT, body);
 };
 
 export const connectionAPIPatch = async <T>(url: string, body: unknown): Promise<T> => {
-  return ConnectAPI.connect(url, MethodsEnum.PATCH);
+  return ConnectAPI.connect(url, MethodsEnum.PATCH, body);
 };
