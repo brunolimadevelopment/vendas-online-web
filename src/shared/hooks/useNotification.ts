@@ -7,7 +7,7 @@ export const useNotification = () => {
   const [api, contextHolder] = notificationAntd.useNotification();
   const { notification } = useGlobalContext(); // global
 
-  console.log(notification);
+  //console.log(notification);
 
   useEffect(() => {
     if (notification?.message && notification.type) {
