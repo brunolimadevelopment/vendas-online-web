@@ -1,5 +1,7 @@
 import { createContext, useContext, useState } from 'react';
 
+import { UserType } from '../../modules/login/types/UserType';
+
 type NotificationType = 'success' | 'info' | 'warning' | 'error';
 
 interface NotificationProps {
@@ -10,6 +12,7 @@ interface NotificationProps {
 
 interface GlobalData {
   notification?: NotificationProps;
+  user?: UserType;
 }
 
 interface GlobalContextProps {
@@ -49,9 +52,18 @@ export const useGlobalContext = () => {
     });
   };
 
-  // Retorna as variaveis ( accessToken e notification ) e os métodos criados para serem usados para alterarem os valores do useGlobalContext.
+  const setUser = (user: UserType) => {
+    setGlobalData({
+      ...globalData,
+      user: user,
+    });
+  };
+
+  // Retorna as variaveis ( user e notification ) e os métodos criados para serem usados para alterarem os valores do useGlobalContext.
   return {
     notification: globalData?.notification,
+    user: globalData?.user,
+    setUser,
     setNotification,
   };
 };

@@ -13,7 +13,7 @@ export default class ConnectAPI {
   static async call<T>(url: string, method: string, body?: unknown): Promise<T> {
     const config: AxiosRequestConfig = {
       headers: {
-        Authorization: getAuthorizationToken(),
+        Authorization: getAuthorizationToken(), // axios verify the authorization, get token in local storage
         'Content-Type': 'application/json',
       },
     };

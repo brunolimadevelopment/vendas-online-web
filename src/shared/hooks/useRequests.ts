@@ -13,7 +13,7 @@ import { useGlobalContext } from './useGlogbalContext';
 export const useRequests = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const { setNotification } = useGlobalContext();
+  const { setNotification, setUser } = useGlobalContext();
 
   const getRequest = async (url: string) => {
     setLoading(true); // aqui o load está true
@@ -46,10 +46,12 @@ export const useRequests = () => {
     return returnData;
   };
 
-  const authRequest = async <T>(body: unknown): Promise<void> => {
+  // dispara ao fazer submit no form de login
+  const authRequest = async (body: unknown): Promise<void> => {
     setLoading(true);
     await connectionAPIPost<AuthType>(URL_AUTH, body)
       .then((result) => {
+        setUser(result.user);
         setAuthorizationToken(result.accessToken); // 1º armazena o token
         navigate(ProductRoutesEnum.PRODUCT); // 2º redireciona para /produtos
         return result;

@@ -12,7 +12,6 @@ import {
   Welcome,
   WhiteBox,
 } from '../styles/loginScreen.styles';
-import { UserType } from '../types/UserType';
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
@@ -27,7 +26,6 @@ const LoginScreen = () => {
     setPassword(event.target.value);
   };
 
-  // essa função vai ter que esperar - add o async. pois o axios vai no backend buscar os dados.
   const handleLogin = () => {
     authRequest({
       email: email,
