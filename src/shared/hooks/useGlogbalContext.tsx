@@ -1,6 +1,4 @@
-import { createContext, useContext, useEffect, useState } from 'react';
-
-import { getAuthorizationToken, setAuthorizationToken } from '../functions/connection/auth';
+import { createContext, useContext, useState } from 'react';
 
 type NotificationType = 'success' | 'info' | 'warning' | 'error';
 
@@ -11,7 +9,6 @@ interface NotificationProps {
 }
 
 interface GlobalData {
-  accessToken?: string;
   notification?: NotificationProps;
 }
 
@@ -40,22 +37,6 @@ export const GlobalProvider = ({ children }: GlobalProvideProps) => {
 export const useGlobalContext = () => {
   const { globalData, setGlobalData } = useContext(GlobalContext);
 
-  useEffect(() => {
-    const token = getAuthorizationToken();
-    if (token) {
-      setAccessToken(token);
-    }
-  }, []);
-
-  // Setando accessToken na variavel global: globalData.
-  const setAccessToken = (accessToken: string) => {
-    setAuthorizationToken(accessToken);
-    setGlobalData({
-      ...globalData,
-      accessToken,
-    });
-  };
-
   // Setando notification na variavel global: globalData.
   const setNotification = (message: string, type: NotificationType, description: string) => {
     setGlobalData({
@@ -70,9 +51,7 @@ export const useGlobalContext = () => {
 
   // Retorna as variaveis ( accessToken e notification ) e os métodos criados para serem usados para alterarem os valores do useGlobalContext.
   return {
-    accessToken: globalData?.accessToken,
     notification: globalData?.notification,
-    setAccessToken,
     setNotification,
   };
 };
