@@ -15,9 +15,9 @@ function App() {
   const { user, setUser } = useGlobalContext();
 
   // users logged out
-  const routes: RouteObject[] = [...firstScreenRoutes, ...loginRoutes];
+  const routes: RouteObject[] = [...loginRoutes];
   // users logged in
-  const routesLoggedIn: RouteObject[] = [...productScreens].map((route) => ({
+  const routesLoggedIn: RouteObject[] = [...firstScreenRoutes, ...productScreens].map((route) => ({
     ...route,
     loader: () => verifyLoggedIn(setUser, user),
   }));
