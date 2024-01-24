@@ -16,6 +16,7 @@ const FirstScreen = () => {
   useEffect(() => {
     const verifyToken = async () => {
       const token = getAuthorizationToken();
+      // se estiver logada visualiza a pág: produtos. se não, redireciona para a pág: login.
       if (token) {
         await connectionAPIGet(URL_USER)
           .then(() => {
