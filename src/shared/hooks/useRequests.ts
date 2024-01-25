@@ -42,23 +42,6 @@ export const useRequests = () => {
     return returnObject;
   };
 
-  const postRequest = async <T>(url: string, body: unknown): Promise<T | undefined> => {
-    setLoading(true); // aqui o load está true
-
-    const returnData = await connectionAPIPost<T>(url, body)
-      .then((result) => {
-        setNotification('Entrando...', 'success', 'Usuário logado com sucesso!');
-        return result;
-      })
-      .catch((error: Error) => {
-        setNotification(error.message, 'error', 'Verifique seu email e senha!');
-        return undefined;
-      });
-
-    setLoading(false);
-    return returnData;
-  };
-
   // dispara ao fazer submit no form de login
   const authRequest = async (body: unknown): Promise<void> => {
     setLoading(true);
@@ -81,6 +64,5 @@ export const useRequests = () => {
     loading,
     authRequest,
     request,
-    postRequest,
   };
 };
