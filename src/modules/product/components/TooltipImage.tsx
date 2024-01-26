@@ -1,13 +1,13 @@
-import { Tooltip } from 'antd';
-
+import Tooltip from '../../../shared/components/tooltip/Tooltip';
 import { ProductType } from '../../../shared/types/ProductType';
+import { ImageProduct } from '../styles/tooltipImage.style';
 
-interface TootipImageProps {
+interface TooltipImageProps {
   product: ProductType;
 }
-const TooltipImage = ({ product }: TootipImageProps) => {
+const TooltipImage = ({ product }: TooltipImageProps) => {
   return (
-    <Tooltip title={product.name}>
+    <Tooltip tooltip={<ImageProduct src={product.image} />}>
       <span>{product.id}</span>
     </Tooltip>
   );
