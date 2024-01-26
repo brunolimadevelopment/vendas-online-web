@@ -1,7 +1,7 @@
-import { Table } from 'antd';
 import { ColumnsType } from 'antd/es/table';
 import { useEffect } from 'react';
 
+import Table from '../../../shared/components/table/Table';
 import { URL_PRODUCT } from '../../../shared/constants/urls';
 import { MethodsEnum } from '../../../shared/enums/methods.enum';
 import { useDataContext } from '../../../shared/hooks/useDataContext';
