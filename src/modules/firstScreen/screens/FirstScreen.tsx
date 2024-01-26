@@ -7,7 +7,6 @@ import { ProductRoutesEnum } from '../../product/routes';
 
 const FirstScreen = () => {
   const { user } = useGlobalContext();
-  console.log(user);
   const navigate = useNavigate();
 
   // Verifica se existe token, antes de renderizar o componente FirstScreen
@@ -15,7 +14,7 @@ const FirstScreen = () => {
     if (user) {
       navigate(ProductRoutesEnum.PRODUCT);
     }
-  }, []);
+  }, [user]);
   return <Spin />;
 };
 
