@@ -2,6 +2,14 @@ import { Typography } from 'antd';
 import styled from 'styled-components';
 const { Title } = Typography;
 
+export const PageLogin = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow-y: hidden;
+`;
+
 export const ContainerLogin = styled.div`
   width: 1093px;
   height: 625px;

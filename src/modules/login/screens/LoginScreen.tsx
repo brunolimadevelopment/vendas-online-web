@@ -9,6 +9,7 @@ import {
   BlackBox,
   ContainerLogin,
   LoginTitle,
+  PageLogin,
   Welcome,
   WhiteBox,
 } from '../styles/loginScreen.styles';
@@ -34,46 +35,48 @@ const LoginScreen = () => {
   };
 
   return (
-    <ContainerLogin>
-      <BlackBox>
-        <Welcome>
-          <SVGHome width={170} height={49} />
-        </Welcome>
-      </BlackBox>
-      <WhiteBox>
-        <LoginTitle level={2} type="secondary">
-          Login
-        </LoginTitle>
-        <Input
-          size="large"
-          title="Email"
-          placeholder="Digite seu email"
-          margin="15px 0 0"
-          addonBefore={<UserOutlined />}
-          onChange={handleEmail}
-          value={email}
-        />
-        <Input
-          type="password"
-          size="large"
-          title="Password"
-          placeholder="Digite sua senha"
-          margin="20px 0 0"
-          addonBefore={<MailOutlined />}
-          onChange={handlePassword}
-          value={password}
-        />
-        <Button
-          size="large"
-          loading={loading}
-          type="primary"
-          margin="20px 0 0"
-          onClick={handleLogin}
-        >
-          ENTRAR
-        </Button>
-      </WhiteBox>
-    </ContainerLogin>
+    <PageLogin>
+      <ContainerLogin>
+        <BlackBox>
+          <Welcome>
+            <SVGHome width={170} height={49} />
+          </Welcome>
+        </BlackBox>
+        <WhiteBox>
+          <LoginTitle level={2} type="secondary">
+            Login
+          </LoginTitle>
+          <Input
+            size="large"
+            title="Email"
+            placeholder="Digite seu email"
+            margin="15px 0 0"
+            addonBefore={<UserOutlined />}
+            onChange={handleEmail}
+            value={email}
+          />
+          <Input
+            type="password"
+            size="large"
+            title="Password"
+            placeholder="Digite sua senha"
+            margin="20px 0 0"
+            addonBefore={<MailOutlined />}
+            onChange={handlePassword}
+            value={password}
+          />
+          <Button
+            size="large"
+            loading={loading}
+            type="primary"
+            margin="20px 0 0"
+            onClick={handleLogin}
+          >
+            ENTRAR
+          </Button>
+        </WhiteBox>
+      </ContainerLogin>
+    </PageLogin>
   );
 };
 
