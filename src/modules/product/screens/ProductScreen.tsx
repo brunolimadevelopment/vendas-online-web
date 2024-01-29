@@ -93,7 +93,7 @@ const ProductScreen = () => {
           </Button>
         </LimiteSizeButton>
       </BoxButtons>
-      <Table columns={columns} dataSource={productsFiltered} />
+      <Table columns={columns} dataSource={productsFiltered} rowKey={(record) => record.id} />
     </Screen>
   );
 };

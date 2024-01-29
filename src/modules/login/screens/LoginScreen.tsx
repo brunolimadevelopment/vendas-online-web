@@ -1,10 +1,12 @@
 import { MailOutlined, UserOutlined } from '@ant-design/icons';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import Button from '../../../shared/components/buttons/button/Button';
 import SVGHome from '../../../shared/components/icons/SVGHome';
 import Input from '../../../shared/components/inputs/input/input';
 import { useRequests } from '../../../shared/hooks/useRequests';
+import { LimitedContainer } from '../../product/styles/productInsert.style';
 import {
   BlackBox,
   ContainerLogin,
@@ -15,6 +17,7 @@ import {
 } from '../styles/loginScreen.styles';
 
 const LoginScreen = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { authRequest, loading } = useRequests();
@@ -28,7 +31,7 @@ const LoginScreen = () => {
   };
 
   const handleLogin = () => {
-    authRequest({
+    authRequest(navigate, {
       email: email,
       password: password,
     });
@@ -46,34 +49,36 @@ const LoginScreen = () => {
           <LoginTitle level={2} type="secondary">
             Login
           </LoginTitle>
-          <Input
-            size="large"
-            title="Email"
-            placeholder="Digite seu email"
-            margin="15px 0 0"
-            addonBefore={<UserOutlined />}
-            onChange={handleEmail}
-            value={email}
-          />
-          <Input
-            type="password"
-            size="large"
-            title="Password"
-            placeholder="Digite sua senha"
-            margin="20px 0 0"
-            addonBefore={<MailOutlined />}
-            onChange={handlePassword}
-            value={password}
-          />
-          <Button
-            size="large"
-            loading={loading}
-            type="primary"
-            margin="20px 0 0"
-            onClick={handleLogin}
-          >
-            ENTRAR
-          </Button>
+          <LimitedContainer>
+            <Input
+              size="large"
+              title="Email"
+              placeholder="Digite seu email"
+              margin="15px 0 0"
+              addonBefore={<UserOutlined />}
+              onChange={handleEmail}
+              value={email}
+            />
+            <Input
+              type="password"
+              size="large"
+              title="Password"
+              placeholder="Digite sua senha"
+              margin="20px 0 0"
+              addonBefore={<MailOutlined />}
+              onChange={handlePassword}
+              value={password}
+            />
+            <Button
+              size="large"
+              loading={loading}
+              type="primary"
+              margin="20px 0 0"
+              onClick={handleLogin}
+            >
+              ENTRAR
+            </Button>
+          </LimitedContainer>
         </WhiteBox>
       </ContainerLogin>
     </PageLogin>

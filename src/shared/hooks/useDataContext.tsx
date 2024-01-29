@@ -1,9 +1,11 @@
 import { createContext, useContext, useState } from 'react';
 
+import { CategoryType } from '../types/CategoryType';
 import { ProductType } from '../types/ProductType';
 
 interface DataContext {
   products?: ProductType[];
+  categories?: CategoryType[];
 }
 
 interface DataContextProps {
@@ -35,9 +37,18 @@ export const useDataContext = () => {
     });
   };
 
+  const setCategories = (categories: CategoryType[]) => {
+    setData({
+      ...data,
+      categories,
+    });
+  };
+
   // Retorna a variaveil (Products) e os métodos criados para serem usados para alterare o valor do useDataContext.
   return {
     products: data?.products || [],
+    categories: data?.categories || [],
     setProducts,
+    setCategories,
   };
 };

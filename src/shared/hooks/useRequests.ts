@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { NavigateFunction } from 'react-router-dom';
 
 import { AuthType } from '../../modules/login/types/AuthType';
 import { ProductRoutesEnum } from '../../modules/product/routes';
@@ -44,14 +44,14 @@ export const useRequests = () => {
 
   // dispara ao fazer submit no form de login
 
-  const authRequest = async (body: unknown): Promise<void> => {
-    const navigate = useNavigate();
+  const authRequest = async (navigate: NavigateFunction, body: unknown): Promise<void> => {
     setLoading(true);
 
     await connectionAPIPost<AuthType>(URL_AUTH, body)
       .then((result) => {
         setUser(result.user);
         setAuthorizationToken(result.accessToken); // 1º armazena o token
+
         navigate(ProductRoutesEnum.PRODUCT); // 2º redireciona para /produtos
         return result;
       })
