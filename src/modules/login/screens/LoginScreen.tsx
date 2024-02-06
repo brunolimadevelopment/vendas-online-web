@@ -6,7 +6,7 @@ import Button from '../../../shared/components/buttons/button/Button';
 import SVGHome from '../../../shared/components/icons/SVGHome';
 import Input from '../../../shared/components/inputs/input/input';
 import { useRequests } from '../../../shared/hooks/useRequests';
-import { LimitedContainer } from '../../product/styles/productInsert.style';
+import { LimitedContainer } from '../../../shared/styles/limited.styled';
 import {
   BlackBox,
   ContainerLogin,
@@ -49,7 +49,7 @@ const LoginScreen = () => {
           <LoginTitle level={2} type="secondary">
             Login
           </LoginTitle>
-          <LimitedContainer>
+          <LimitedContainer width={400}>
             <Input
               size="large"
               title="Email"
