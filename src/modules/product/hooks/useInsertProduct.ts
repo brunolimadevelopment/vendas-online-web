@@ -18,6 +18,7 @@ export const useInsertProduct = () => {
     image: '',
   });
 
+  // atualiza o estado do botão de inserir produto.
   useEffect(() => {
     if (product.name && product.categoryId && product.image && product.price > 0) {
       setDisabledButton(false);
